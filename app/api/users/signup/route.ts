@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 import lunarify from "../../../lib/lunaris";
 import { randomBytes } from 'crypto';
 
-export const generateRandomString = () => {
+const generateRandomString = () => {
   return randomBytes(32).toString('hex');
 };
 
