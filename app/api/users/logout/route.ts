@@ -10,6 +10,7 @@ export async function GET() {
             httpOnly: true,
             expires: new Date(0),
             path: "/",  // Ensures the cookie is cleared on the root path
+            sameSite: 'lax',  // Set appropriate SameSite attribute
         });
         return response;
     } catch (error: any) {
