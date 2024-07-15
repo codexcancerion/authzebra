@@ -8,29 +8,31 @@ import { useRouter } from "next/navigation";
 
 export default function AuthZebraPage({ params }: { params: { id : string } }) {
     const router = useRouter()
-    const [leading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [verificationSuccess, setVerificationSuccess] = useState(false);
-    const [emailLuna, setEmailLuna] = useState("");
+    // const [emailLuna, setEmailLuna] = useState("");
     const [idLuna, setIdLuna] = useState("");
-    const [keyLuna, setKeyLuna] = useState("");
+    // const [keyLuna, setKeyLuna] = useState("");
     const [aak, setAAK] = useState("");
     const [loginData, setLoginData] = useState({
       email: '',
       password: ''
     })
-    const [user, setUser] = useState({
-      username: '',
-      email: '',
-      _id: '',
-      fullname: '',
-      password: ''
-  });
+//     const [user, setUser] = useState({
+//       username: '',
+//       email: '',
+//       _id: '',
+//       fullname: '',
+//       password: ''
+//   });
 
     
+    // setIdLuna(lunarify(params.id, false, 1234))
+    // console.log(idLuna)
 
     useEffect(()=>{
         setIdLuna(lunarify(params.id, false, 1234))
-    }, [])
+    }, [params.id])
 
     
     const handleProceed = (e:any) => {
