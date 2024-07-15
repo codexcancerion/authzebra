@@ -19,9 +19,10 @@ export async function POST(request: NextRequest){
             return NextResponse.json({error: "User does not exist"}, {status: 400})
         }
 
+        var isPasswordValid = false;
         //compare password
         if(login) {
-            const isPasswordValid = await bcryptjs.compare(password, user.password);
+            isPasswordValid = await bcryptjs.compare(password, user.password);
             console.log(password)
             console.log(user.password)
             if(!isPasswordValid){
