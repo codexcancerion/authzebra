@@ -5,6 +5,7 @@ import lunarify from "@/app/lib/lunaris";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import LoadingSpinner from "@/app/lib/LoadingSpinner";
 
 export default function AuthZebraPage({ params }: { params: { id : string } }) {
     const router = useRouter()
@@ -18,17 +19,7 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
       email: '',
       password: ''
     })
-//     const [user, setUser] = useState({
-//       username: '',
-//       email: '',
-//       _id: '',
-//       fullname: '',
-//       password: ''
-//   });
 
-    
-    // setIdLuna(lunarify(params.id, false, 1234))
-    // console.log(idLuna)
 
     useEffect(()=>{
         setIdLuna(lunarify(params.id, false, 1234))
@@ -68,6 +59,10 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
     }
 
     
+    if (loading) {
+        return <LoadingSpinner />;
+    }
+    
     const onLogin = async () => {
         try {
             const response = await axios.post("/api/users/login", {...loginData, login: false, recover: true});
@@ -94,7 +89,7 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
 
                 <form className="space-y-4">
                     <div>
-                        <label htmlFor="aak" className="block text-gray-700">Email</label>
+                        <label htmlFor="aak" className="block text-gray-700">AAK</label>
                         <input
                             type="text"
                             id="aak"

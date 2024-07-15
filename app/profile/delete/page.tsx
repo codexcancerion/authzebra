@@ -5,9 +5,11 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi"; // Import trash icon
+import LoadingSpinner from "@/app/lib/LoadingSpinner";
 
 export default function ProfilePage() {
     const router = useRouter();
+    const [loading, setLoading] = useState(false)
     const [data, setData] = useState({
         username: '',
         email: '',
@@ -18,10 +20,13 @@ export default function ProfilePage() {
 
     const getUserDetails = async () => {
         try {
+            setLoading(true)
             const res = await axios.get('/api/users/self');
             console.log(res.data);
             setData(res.data.data);
+            setLoading(false)
         } catch (error:any) {
+            setLoading(false)
             console.error("Error fetching user details:", error.message);
             toast.error("Failed to fetch user details");
         }
@@ -45,6 +50,10 @@ export default function ProfilePage() {
     
     const back = () => {
         router.push("/profile");
+    }
+    
+    if (loading) {
+        return <LoadingSpinner />;
     }
 
     return (

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import lunarify from "../lib/lunaris";
+import LoadingSpinner from "../lib/LoadingSpinner";
 
 export default function ForgotPasswordPage() {
     const router = useRouter();
@@ -13,6 +14,7 @@ export default function ForgotPasswordPage() {
     const [user, setUser] = useState({
         email: ""
     });
+    
 
     const handleEmail = (e: any) => {
         setUser({ ...user, email: e.target.value });
@@ -44,6 +46,9 @@ export default function ForgotPasswordPage() {
     };
     
 
+    if (loading) {
+        return <LoadingSpinner />;
+    }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">

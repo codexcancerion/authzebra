@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { HiOutlineSave } from "react-icons/hi"; // Import save icon
 import { FaUserEdit } from "react-icons/fa"; // Import edit icon
+import LoadingSpinner from "@/app/lib/LoadingSpinner";
 
 export default function EditPage() {
     const [loading, setLoading] = useState(false);
@@ -25,16 +26,20 @@ export default function EditPage() {
         password: ''
     });
 
+
     useEffect(() => {
         getUserDetails();
     }, []);
 
     const getUserDetails = async () => {
         try {
+            setLoading(true);
             const res = await axios.get('/api/users/self');
             console.log(res.data);
             setCurrentData(res.data.data);
+            setLoading(false);
         } catch (error: any) {
+            setLoading(false);
             console.error("Error fetching user details:", error.message);
             toast.error("Failed to fetch user details");
         }
@@ -48,7 +53,9 @@ export default function EditPage() {
             console.log("Update success", response.data);
             toast.success("Profile updated successfully");
             router.push("/profile");
+            setLoading(false);
         } catch (error:any) {
+            setLoading(false);
             console.error("Update failed", error.message);
             toast.error(error.message);
         } finally {
@@ -85,6 +92,11 @@ export default function EditPage() {
         router.push("/profile");
     }
 
+
+    
+    if (loading) {
+        return <LoadingSpinner />;
+    }
     return (
         <div className="h-screen flex flex-col items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">

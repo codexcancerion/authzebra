@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import axios from "axios";
+import LoadingSpinner from "../lib/LoadingSpinner";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -13,6 +14,7 @@ export default function LoginPage() {
     });
     const [buttonDisabled, setButtonDisabled] = useState(true);
     const [loading, setLoading] = useState(false);
+    
 
     const onLogin = async () => {
         try {
@@ -46,6 +48,9 @@ export default function LoginPage() {
         setUser({ ...user, password: e.target.value });
     };
 
+    if (loading) {
+        return <LoadingSpinner />;
+    }
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">

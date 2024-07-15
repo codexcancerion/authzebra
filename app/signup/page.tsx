@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import LoadingSpinner from "../lib/LoadingSpinner";
 
 export default function SignupPage() {
     const router = useRouter();
@@ -43,6 +44,10 @@ export default function SignupPage() {
         const { id, value } = e.target;
         setUser({ ...user, [id]: value });
     };
+
+    if (loading) {
+        return <LoadingSpinner />;
+    }
 
     return (
         <div className="h-screen flex items-center justify-center bg-gray-100">

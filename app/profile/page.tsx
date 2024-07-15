@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { HiOutlinePencilAlt, HiOutlineTrash } from "react-icons/hi"; // Import icons
 import { FaUserCircle } from "react-icons/fa"; // Import user icon
+import LoadingSpinner from "../lib/LoadingSpinner";
 
 export default function ProfilePage() {
     const router = useRouter();
+    const [loading, setLoading] = useState(false)
     const [data, setData] = useState({
         username: '',
         email: '',
@@ -22,23 +24,28 @@ export default function ProfilePage() {
 
     const getUserDetails = async () => {
         try {
+            setLoading(true)
             const res = await axios.get('/api/users/self');
             console.log(res.data);
             setData(res.data.data);
+            setLoading(false)
         } catch (error: any) {
             console.error("Error fetching user details:", error.message);
             toast.error("Failed to fetch user details");
+            setLoading(false)
         }
     };
 
     const logout = async () => {
-        try {
+        try {            
+            setLoading(true)
             await axios.get("/api/users/logout");
             toast.success("Logout successful");
             window.location.href = "/login"
         } catch (error: any) {
             console.error("Logout error:", error.message);
             toast.error("Failed to logout");
+            setLoading(false)
         }
     };
 
@@ -49,6 +56,10 @@ export default function ProfilePage() {
     const handleDeleteProfile = () => {
         router.push("/profile/delete");
     };
+
+    if (loading) {
+        return <LoadingSpinner />;
+    }
 
     return (
         <div className="h-screen flex flex-col items-center justify-center bg-gray-100">

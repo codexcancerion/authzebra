@@ -12,9 +12,10 @@ export default function Navbar() {
             <div className="container mx-auto flex justify-between items-center">
                 <div className="text-white text-lg font-bold">
                     <Link href={"/"}>Home</Link>
-                    <Link href={"/dashboard"}>Dashboard</Link>
+                    {/* <Link href={"/dashboard"}>Dashboard</Link> */}
                 </div>
                 <div className="space-x-4">
+                            <Link href={"/dashboard"} className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</Link>
                             <Link href="/profile" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Profile</Link>
                        
                             <Link href="/login" className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</Link>
