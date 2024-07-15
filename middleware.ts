@@ -1,24 +1,30 @@
 import { NextResponse } from 'next/server'
 import { NextRequest } from 'next/server'
  
-// This function can be marked `async` if using `await` inside
+
 export function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname
+  const path = request.nextUrl.pathname;
+  const isPublicPath = path === '/login' || path === '/signup' || path === '/' || path === '/forgotpassword/authzebra';
 
-  const isPublicPath = path === '/login' || path === '/signup' || path === "/" || path === "/forgotpassword/authzebra"
+  const token = request.cookies.get('token')?.value || '';
 
-  const token = request.cookies.get('token')?.value || ''
+  // Logging for debugging purposes
+  console.log(`Path: ${path}, Token: ${token}`);
 
-  if (isPublicPath && token){
-    return NextResponse.redirect(new URL('/', request.nextUrl))
+  // Redirect if the user is authenticated and tries to access public paths
+  if (isPublicPath && token) {
+    return NextResponse.redirect(new URL('/dashboard', request.nextUrl));  // Redirect to dashboard if already logged in
   }
 
-  if (!isPublicPath && !token){
-    return NextResponse.redirect(new URL('/login', request.nextUrl))
+  // Redirect if the user is not authenticated and tries to access protected paths
+  if (!isPublicPath && !token) {
+    return NextResponse.redirect(new URL('/login', request.nextUrl));  // Redirect to login if not authenticated
   }
+
+  return NextResponse.next();  // Proceed if neither condition is met
 }
- 
-// See "Matching Paths" below to learn more
+
+// Configuration for matching paths
 export const config = {
   matcher: [
     '/',
@@ -28,5 +34,7 @@ export const config = {
     '/profile/delete',
     '/profile/edit',
     '/dashboard',
-  ]
-}
+    '/forgotpassword',
+    '/forgotpassword/authzebra',
+  ],
+};
