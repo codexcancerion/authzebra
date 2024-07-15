@@ -12,7 +12,7 @@ export default function EditPage() {
     const [data, setData] = useState({
         fullname: "",
         email: "",
-        id: "",
+        _id: "",
         username: "",
         password: ""
     });

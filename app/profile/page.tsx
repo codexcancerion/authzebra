@@ -11,7 +11,7 @@ export default function ProfilePage() {
     const [data, setData] = useState({
         username: '',
         email: '',
-        id: '',
+        _id: '',
         fullname: '',
         password: ''
     });
