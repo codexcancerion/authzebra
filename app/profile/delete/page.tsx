@@ -40,7 +40,6 @@ export default function ProfilePage() {
         try {
             await axios.delete('/api/users/delete', { data: { _id: data._id } });
             toast.success("User account deleted successfully");
-            router.refresh;
             router.push("/"); 
         } catch (error:any) {
             console.error("Delete failed:", error.message);
