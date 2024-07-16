@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { HiOutlinePencilAlt, HiOutlineTrash } from "react-icons/hi"; // Import icons
 import { FaUserCircle } from "react-icons/fa"; // Import user icon
 import LoadingSpinner from "../lib/LoadingSpinner";
+import { deleteTokens } from "../helpers/deleteTokenFromCookies";
 
 export default function ProfilePage() {
     const router = useRouter();
@@ -41,7 +42,9 @@ export default function ProfilePage() {
             setLoading(true)
             await axios.get("/api/users/logout");
             toast.success("Logout successful");
-            window.location.href = "/login"
+            deleteTokens();
+            // window.location.href = "/login"
+            router.refresh();
             setLoading(false)
         } catch (error: any) {
             console.error("Logout error:", error.message);
