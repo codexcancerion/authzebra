@@ -74,6 +74,14 @@ export default function ProfilePage() {
                 </div>
                 <p className="text-3xl font-bold mb-4">{data.fullname}</p>
 
+{/* Display additional user information */}
+                <div className="border-b pb-4 mb-4">
+                    <p className="text-gray-600"><span className="font-bold">Username:</span> {data.username}</p>
+                    <p className="text-gray-600"><span className="font-bold">Email:</span> {data.email}</p>
+                    <p className="text-gray-600"><span className="font-bold">ID:</span> {data._id}</p>
+                </div>
+
+
                 <button
                     onClick={logout}
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4"
@@ -97,12 +105,7 @@ export default function ProfilePage() {
                     </button>
                 </div>
 
-                {/* Display additional user information */}
-                <div className="border-t pt-4">
-                    <p className="text-gray-600"><span className="font-bold">Username:</span> {data.username}</p>
-                    <p className="text-gray-600"><span className="font-bold">Email:</span> {data.email}</p>
-                    <p className="text-gray-600"><span className="font-bold">ID:</span> {data._id}</p>
-                </div>
+                
             </div>
         </div>
     );
