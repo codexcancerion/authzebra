@@ -2,19 +2,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/userModel";
 import {connect} from "@/dbconfig/dbconfig";
-import { getDataFromToken } from "@/app/helpers/getDataFromToken";
+import {getIdFromCookies} from "@/app/helpers/getIdFromCookies"
 
 connect()
 
 
 export async function GET(request: NextRequest){
     try {
-        const userId = await getDataFromToken(request)
-        const user = await User.findOne({_id: userId}).select("-password -recovery_key")
-
+        const userId = await getIdFromCookies(request)
+        
         return NextResponse.json({
-            message: "User Found",
-            data: user
+            message: "Cookie Found",
+            id: userId
         })
     } catch (error: any) {
         return NextResponse.json({error: error.message}, {status: 500})

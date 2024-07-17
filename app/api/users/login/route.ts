@@ -36,6 +36,7 @@ export async function POST(request: NextRequest){
             email: user.email,
             fullname: user.fullname,
             username: user.username,
+            aak: user.aak,
             token: randomBytes(64).toString('hex')
         }
         //create token
@@ -47,7 +48,10 @@ export async function POST(request: NextRequest){
         })
         response.cookies.set("token", token, {
             httpOnly: true,
-        })
+        })        
+        response.cookies.set("recover", "", {
+            httpOnly: true, expires: new Date(0)
+        });
 
         return response;
         

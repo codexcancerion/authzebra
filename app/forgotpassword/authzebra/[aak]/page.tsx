@@ -6,10 +6,12 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/app/lib/LoadingSpinner";
+import {QrReader} from 'react-qr-reader';
 
-export default function AuthZebraPage({ params }: { params: { id : string } }) {
+export default function AuthZebraPage({ params }: { params: { aak : string } }) {
     const router = useRouter()
     const [loading, setLoading] = useState(false);
+    const [scanned, setScanned] = useState(false);
     const [failedVerify, setFailedVerify] = useState(false);
     const [verificationSuccess, setVerificationSuccess] = useState(false);
     // const [emailLuna, setEmailLuna] = useState("");
@@ -23,24 +25,35 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
 
 
     useEffect(()=>{
-        setIdLuna(lunarify(params.id, false, 1234))
-    }, [params.id])
+        setAAK(params.aak)
+        verifyAAK()
+    }, [params.aak])
 
     
-    const handleProceed = (e:any) => {
-        e.preventDefault()
-        verifyAAK()
-    }
+    // useEffect(()=>{
+    //     console.log("AAK effect"+aak);
+    //     verifyAAK()
+    // }, [aak])
 
-    const handleAAK = (e: any) => {
-        setAAK(e.target.value)
-    }
 
     const verifyAAK = async ()=>{
         // router.push("/forgotpassword/authzebra");
         try {
+            const response = await axios.get("/api/recover/account");
+            setIdLuna(response.data.id)
+        } catch (error: any) {
+            setFailedVerify(true)
+            setLoading(false)
+        } 
+        finally {
+            setLoading(false);
+        }
+
+        try {
             setLoading(true);
             setFailedVerify(false)
+            console.log(idLuna)
+            console.log(aak)
             const response = await axios.post("/api/users/verifyaak", {id:idLuna, aakLuna: aak});
             
             console.log("Verification success", response.data);
@@ -79,38 +92,27 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
         }
     };
 
+    
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                 <h1 className="text-2xl font-bold mb-6 text-center">Auth Zebra</h1>
-                <h1 className="text-2xl font-bold mb-6 text-center">{verificationSuccess?"Verification success":""}</h1>
+                <h1 className="text-1xl font-bold mb-6 text-center">{verificationSuccess?"Verification success":""}</h1>
                 
-
-                <p className="mb-4 text-center">
-                    Enter the Alternative Authentication Key
-                </p>
-
-                <form className="space-y-4">
-                    <div>
-                        <label htmlFor="aak" className="block text-gray-700">AAK</label>
-                        <input
-                            type="text"
-                            id="aak"
-                            onChange={handleAAK}
-                            className="w-full p-2 border border-gray-300 rounded"
-                            placeholder="Enter your AAK"
-                        />
-                    </div>
+                    <p className="mt-4 text-center text-sm">
+                        Just one more step
+                    </p>
 
                     <button
                         type="submit"
-                        onClick={handleProceed}
+                        onClick={verifyAAK}
                         className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     >
                         Proceed
                     </button>
-                </form>
-
+                
+                
                 
                 <p className="mt-4 text-red-500">{failedVerify ? "Oh no! Verification failed" : ""}</p>
 

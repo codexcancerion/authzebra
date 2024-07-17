@@ -34,7 +34,9 @@ export default function ForgotPasswordPage() {
             
             console.log("Found success", response.data);
             toast.success("Found success");
-            router.push("/forgotpassword/authzebra/"+lunarify(response.data.data._id, true, 1234));
+            const saveResponse = await axios.post("/api/recover/saveIdToCookies", {_id:response.data.data._id})
+            console.log("Save success", saveResponse.data)
+            router.push("/forgotpassword/authzebra");
         } catch (error: any) {
             setFailedEmail(true)
             console.log("Found failed", error.message);
