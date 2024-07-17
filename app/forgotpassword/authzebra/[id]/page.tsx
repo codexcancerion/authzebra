@@ -10,6 +10,7 @@ import LoadingSpinner from "@/app/lib/LoadingSpinner";
 export default function AuthZebraPage({ params }: { params: { id : string } }) {
     const router = useRouter()
     const [loading, setLoading] = useState(false);
+    const [failedVerify, setFailedVerify] = useState(false);
     const [verificationSuccess, setVerificationSuccess] = useState(false);
     // const [emailLuna, setEmailLuna] = useState("");
     const [idLuna, setIdLuna] = useState("");
@@ -39,6 +40,7 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
         // router.push("/forgotpassword/authzebra");
         try {
             setLoading(true);
+            setFailedVerify(false)
             const response = await axios.post("/api/users/verifyaak", {id:idLuna, aakLuna: aak});
             
             console.log("Verification success", response.data);
@@ -51,6 +53,7 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
             setVerificationSuccess(response.data.success)
             onLogin()
         } catch (error: any) {
+            setFailedVerify(true)
             setLoading(false)
         } 
         finally {
@@ -107,6 +110,9 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
                         Proceed
                     </button>
                 </form>
+
+                
+                <p className="mt-4 text-red-500">{failedVerify ? "Oh no! Verification failed" : ""}</p>
 
                 <p className="mt-4 text-center text-sm">
                     Remember your password?{" "}

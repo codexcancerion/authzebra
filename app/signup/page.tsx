@@ -16,15 +16,18 @@ export default function SignupPage() {
         password: ""
     });
     const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [failedSignup, setFailedSignup] = useState(false);
 
     const onSignup = async () => {
         try {
             setLoading(true);
+            setFailedSignup(false)
             const response = await axios.post("/api/users/signup", user);
             console.log("Sign up success", response.data);
             toast.success("Sign up success");
             router.push("/login");
         } catch (error:any) {
+            setFailedSignup(true)
             console.log("Sign up failed", error.message);
             toast.error(error.message);
         } finally {
@@ -93,6 +96,8 @@ export default function SignupPage() {
                 >
                     {buttonDisabled ? "Incomplete Info" : "Sign Up"}
                 </button>
+
+                <p className="mt-4 text-red-500">{failedSignup ? "Sign up failed. Try again" : ""}</p>
 
                 <p className="mt-4 text-center">
                     Already have an account? <Link href="/login" className="text-blue-500 hover:underline">Log in</Link>

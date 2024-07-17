@@ -10,6 +10,7 @@ import LoadingSpinner from "../lib/LoadingSpinner";
 export default function ForgotPasswordPage() {
     const router = useRouter();
     const [emailFound, setEmailFound] = useState(false);
+    const [failedEmail, setFailedEmail] = useState(false);
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState({
         email: ""
@@ -28,13 +29,14 @@ export default function ForgotPasswordPage() {
         try {
             console.log(user)
             setLoading(true);
+            setEmailFound(false)
             const response = await axios.post("/api/users/findByEmail", user);
             
             console.log("Found success", response.data);
             toast.success("Found success");
-            setEmailFound(true)
             router.push("/forgotpassword/authzebra/"+lunarify(response.data.data._id, true, 1234));
         } catch (error: any) {
+            setFailedEmail(true)
             console.log("Found failed", error.message);
             toast.error(error.message);
             setEmailFound(false)
@@ -80,12 +82,8 @@ export default function ForgotPasswordPage() {
                     </button>
                 </form>
 
-                    <p className="mb-4 text-center">
-                        {loading ? "Loading" : ""}
-                    </p>
-                    <p className="mb-4 text-center" hidden={emailFound}>
-                        {emailFound ? "Email found" : "Email not found"}
-                    </p>
+                    
+                <p className="mt-4 text-red-500">{failedEmail ? "Email not found. Try again" : ""}</p>
 
                 <p className="mt-4 text-center text-sm">
                     Remember your password?{" "}

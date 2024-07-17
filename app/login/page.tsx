@@ -14,11 +14,13 @@ export default function LoginPage() {
     });
     const [buttonDisabled, setButtonDisabled] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [failedLogin, setFailedLogin] = useState(false);
     
 
     const onLogin = async () => {
         try {
             setLoading(true);
+            setFailedLogin(false)
             const response = await axios.post("/api/users/login", {...user, login: true, recover: false});
             console.log("Login success", response.data);
             window.location.href = "/dashboard"
@@ -27,6 +29,7 @@ export default function LoginPage() {
         } catch (error: any) {
             console.log("Login failed", error.message);
             toast.error(error.message);
+            setFailedLogin(true)
         } finally {
             setLoading(false);
         }
@@ -52,6 +55,7 @@ export default function LoginPage() {
         return <LoadingSpinner />;
     }
     return (
+        <>
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                 <h1 className="text-2xl font-bold mb-6">{loading ? "Loading..." : "Log in"}</h1>
@@ -80,6 +84,7 @@ export default function LoginPage() {
                 >
                     {loading ? "Logging in..." : "Log in"}
                 </button>
+                <p className="mt-4 text-red-500">{failedLogin ? "Login Failed. Check email and password" : ""}</p>
 
                 <div className="mt-4 text-center">
                     <p>
@@ -92,5 +97,7 @@ export default function LoginPage() {
                 </div>
             </div>
         </div>
+        
+        </>
     );
 }
