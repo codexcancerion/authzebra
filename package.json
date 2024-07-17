@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm install --legacy-peer-deps && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,7 +18,7 @@
     "qrcode": "^1.5.3",
     "react": "^18",
     "react-dom": "^18",
-    "react-qr-reader": "^3.0.0-beta-1",
+    "react-qr-reader": "^3.0.0-beta-1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
