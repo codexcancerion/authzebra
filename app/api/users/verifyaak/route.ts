@@ -13,6 +13,7 @@ export async function POST(request: NextRequest){
         console.log(reqBody)
         const {id, aakLuna} = reqBody;
         const _id = id
+        console.log("came here")
         const user = await User.findOne({_id}).select("-fullname -username");
 
         if(!user){
@@ -21,7 +22,9 @@ export async function POST(request: NextRequest){
 
         //decypher aaklune
         const aakDeluna = lunarify(aakLuna, false, 1234)
+        console.log(aakDeluna)
         const recoveryKeyDeluna = aakDeluna.slice(0, 64);
+        console.log(recoveryKeyDeluna)
 
         console.log(aakDeluna)
         console.log(recoveryKeyDeluna)

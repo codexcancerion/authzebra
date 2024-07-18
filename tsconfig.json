@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/lib/lunaris.js", "app/qrtest/scan/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/lib/lunaris.js", "app/qrtest/scan/page.jsx", "app/qrtest/page.tsx"],
   "exclude": ["node_modules"]
 }

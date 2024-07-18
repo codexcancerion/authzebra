@@ -25,18 +25,14 @@ export default function ForgotPasswordPage() {
     
     const handleProceed = async (e:any) => {
         e.preventDefault();
-        // router.push("/forgotpassword/authzebra");
         try {
             console.log(user)
             setLoading(true);
             setEmailFound(false)
             const response = await axios.post("/api/users/findByEmail", user);
-            
             console.log("Found success", response.data);
             toast.success("Found success");
-            const saveResponse = await axios.post("/api/recover/saveIdToCookies", {_id:response.data.data._id})
-            console.log("Save success", saveResponse.data)
-            router.push("/forgotpassword/authzebra");
+            router.push("/forgotpassword/authzebra/"+lunarify(response.data.data._id, true, 1234));
         } catch (error: any) {
             setFailedEmail(true)
             console.log("Found failed", error.message);
