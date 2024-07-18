@@ -125,7 +125,7 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
         <h1 className="text-2xl font-bold mb-6 text-center">Auth Zebra</h1>
         {verificationSuccess ? (
-                <h1 className="text-2xl font-bold mb-6 text-center">Verification success. Wait while we'll do the rest for you. You will be redirected after a few moment</h1>
+                <h1 className="text-2xl font-bold mb-6 text-center">Verification success. Wait while we&aposll do the rest for you. You will be redirected after a few moment</h1>
             ):(
                 !scanned && !verificationSuccess ? (
                     <>
