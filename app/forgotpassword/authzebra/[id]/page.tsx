@@ -116,39 +116,60 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
     }
   };
 
+  const handleTryAgain = ()=>{
+    window.location.href= "/forgotpassword/authzebra/"+params.id
+}
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
         <h1 className="text-2xl font-bold mb-6 text-center">Auth Zebra</h1>
-        <h1 className="text-2xl font-bold mb-6 text-center">{verificationSuccess ? "Verification success" : ""}</h1>
-        
-        {!scanned ? (
-          <>
-            <p className="mb-4 text-center">
-                Scan QR Code or Upload QR Code Image
-            </p>
-            <video ref={cameraRef} style={{ width: '100%' }} />
-            <input type="file" accept="image/*" onChange={handleScanFile} />
-          </>
-        ) : (
-          <>
-            <p className="mb-4 text-center">
-                Got your code
-            </p>
-            <button
-                    type="submit"
-                    onClick={verifyAAK}
-                    className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                    Proceed
-                </button>
-            </>
+        {verificationSuccess ? (
+                <h1 className="text-2xl font-bold mb-6 text-center">Verification success. Wait while we'll do the rest for you. You will be redirected after a few moment</h1>
+            ):(
+                !scanned && !verificationSuccess ? (
+                    <>
+                    <p className="mb-4 text-center">
+                        Scan QR Code or Upload QR Code Image
+                    </p>
+                    <video ref={cameraRef} style={{ width: '100%' }} />
+                    <input type="file" accept="image/*" onChange={handleScanFile} />
+                    </>
+                ) : (
+                    !failedVerify ? (
+                        <>
+                            <p className="mb-4 text-center">
+                                Got your code
+                            </p>
+                            <button
+                                    type="submit"
+                                    onClick={verifyAAK}
+                                    className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                >
+                                    Proceed
+                                </button>
+                            </>
+                    ):(
+                        <>
+                            <p className="mt-4 text-red-500">Oh no! Verification failed. Might try again?</p>
+                            <button
+                                type="submit"
+                                onClick={handleTryAgain}
+                                className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            >
+                                Try again
+                            </button>
+                        </>
+                    )
+                )
         )}
-        <p className="mt-4 text-red-500">{failedVerify ? "Oh no! Verification failed" : ""}</p>
-        <p className="mt-4 text-center text-sm">
-          Remember your password?{" "}
-          <Link href="/login" className="text-blue-500 hover:underline">Log in here</Link>
-        </p>
+        
+        {!verificationSuccess &&
+            <p className="mt-4 text-center text-sm">
+            Remember your password?{" "}
+            <Link href="/login" className="text-blue-500 hover:underline">Log in here</Link>
+            </p>
+        }
       </div>
     </div>
   );
