@@ -62,7 +62,7 @@ export default function Documentation() {
             </li>
             <li>
               <strong>React.js</strong>
-              <p>React is a JavaScript library for building user interfaces, primarily for single-page applications where you can create complex UIs from small and isolated pieces of code called "components." Utilized for building reusable and efficient UI components, enhancing the interactivity and user experience of the app.</p>
+              <p>React is a JavaScript library for building user interfaces, primarily for single-page applications where you can create complex UIs from small and isolated pieces of code called &quot;components.&quot; Utilized for building reusable and efficient UI components, enhancing the interactivity and user experience of the app.</p>
             </li>
             <li>
               <strong>Tailwind CSS</strong>
