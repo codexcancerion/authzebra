@@ -89,6 +89,11 @@ export default function Dashboard() {
                 Profile
               </button>
             </Link>
+            <Link href="/zebra/docs" passHref>
+              <button className="bg-slate-700 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded">
+                Documentation
+              </button>
+            </Link>
           </div>
           <div className="my-6 bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
             <h1 className="text-center text-2xl font-bold mb-6 ">AAK</h1>
