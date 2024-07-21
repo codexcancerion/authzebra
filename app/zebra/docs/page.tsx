@@ -33,7 +33,7 @@ export default function Documentation() {
               <ul className="list-decimal list-inside pl-4 space-y-2">
                 <li>User creates an account including full name, email, username, and password.</li>
                 <li>The system generates a unique ID, Recovery Key, and unique Alternative Authentication Key (AAK) (encrypted user email and Recovery Key) for the user and saves it to the database.</li>
-                <li>The system generates the user’s QR Code based on the AAK and displays it on the user’s screen (user can download the QR code).</li>
+                <li>The system generates the user&apos;s QR Code based on the AAK and displays it on the user&apos;s screen (user can download the QR code).</li>
               </ul>
             </div>
             <div>
