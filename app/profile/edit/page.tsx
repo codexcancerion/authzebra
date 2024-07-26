@@ -37,6 +37,7 @@ export default function EditPage() {
             const res = await axios.get('/api/users/self');
             console.log(res.data);
             setCurrentData(res.data.data);
+            setData(res.data.data);
             setLoading(false);
         } catch (error: any) {
             setLoading(false);
@@ -47,6 +48,7 @@ export default function EditPage() {
 
 
     const onSave = async () => {
+        console.log(data)
         try {
             setLoading(true);
             const response = await axios.put("/api/users/updateSelf", data);

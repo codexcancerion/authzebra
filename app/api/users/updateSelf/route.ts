@@ -14,7 +14,7 @@ export async function PUT(request: NextRequest) {
         console.log(_id + fullname + email + username + password)
 
         // Check if user exists
-        const user = await User.findOne(_id);
+        const user = await User.findOne({_id});
         if (!user) {
             return NextResponse.json({ error: "User not found" }, { status: 404 });
         }
