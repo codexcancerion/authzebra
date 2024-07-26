@@ -108,7 +108,7 @@ export default function Documentation() {
             <li>
               <strong>Create an Account</strong>
               <ul className="list-disc list-inside pl-4 space-y-2 text-gray-700">
-                <li>Navigate to the sign-up page by clicking the "Sign Up" button on the home page.</li>
+                <li>Navigate to the sign-up page by clicking the &quot;Sign Up&quot; button on the home page.</li>
                 <li>Fill in your full name, email, username, and password.</li>
                 <li>Submit the form to create an account.</li>
                 <li>Download the generated QR Code displayed on the screen.</li>
@@ -125,7 +125,7 @@ export default function Documentation() {
               <strong>Test QR Code Authentication</strong>
               <ul className="list-disc list-inside pl-4 space-y-2 text-gray-700">
                 <li>First, go to profile and logout.</li>
-                <li>Go to the login page by clicking the "Login" button on the home page.</li>
+                <li>Go to the login page by clicking the &quot;Login&quot; button on the home page.</li>
                 <li>Go to the Forgot Password page.</li>
                 <li>Enter your email and upload the saved QR Code.</li>
                 <li>Verify if the system correctly recovers your account and allows you to update your password.</li>

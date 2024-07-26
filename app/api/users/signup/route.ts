@@ -1,5 +1,6 @@
 import {connect} from "@/dbconfig/dbconfig";
 import User from "@/models/userModel";
+import AllUser from "@/models/allUsersModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import lunarify from "../../../lib/lunaris";
@@ -43,7 +44,17 @@ export async function POST(request:NextRequest){
             aak: aak
         })
 
+        const newAllUser = new AllUser({
+            fullname,
+            email,
+            username,
+            password: hashedPassword,
+            recovery_key: newRecoveryKey,
+            aak: aak
+        })
+
         const savedUser = await newUser.save();
+        const savedAllUser = await newAllUser.save();
         console.log(savedUser);
 
         return NextResponse.json({
