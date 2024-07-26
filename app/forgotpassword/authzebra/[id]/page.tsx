@@ -123,22 +123,22 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h1 className="text-2xl font-bold mb-6 text-center">Auth Zebra</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-gray-700">Auth Zebra</h1>
         {verificationSuccess ? (
-                <h1 className="text-2xl font-bold mb-6 text-center">Verification success. Wait while we do the rest for you. You will be redirected after a few moment</h1>
+                <h1 className="text-2xl font-bold mb-6 text-center text-gray-700">Verification success. Wait while we do the rest for you. You will be redirected after a few moment</h1>
             ):(
                 !scanned && !verificationSuccess ? (
                     <>
-                    <p className="mb-4 text-center">
+                    <p className="mb-4 text-center text-gray-700">
                         Scan QR Code or Upload QR Code Image
                     </p>
                     <video ref={cameraRef} style={{ width: '100%' }} />
-                    <input type="file" accept="image/*" onChange={handleScanFile} />
+                    <input type="file" className="mx-auto" accept="image/*" onChange={handleScanFile} />
                     </>
                 ) : (
                     !failedVerify ? (
                         <>
-                            <p className="mb-4 text-center">
+                            <p className="mb-4 text-center text-gray-700">
                                 Got your code
                             </p>
                             <button
@@ -165,7 +165,7 @@ export default function AuthZebraPage({ params }: { params: { id : string } }) {
         )}
         
         {!verificationSuccess &&
-            <p className="mt-4 text-center text-sm">
+            <p className="mt-4 text-center text-sm text-gray-700">
             Remember your password?{" "}
             <Link href="/login" className="text-blue-500 hover:underline">Log in here</Link>
             </p>

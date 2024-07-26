@@ -82,7 +82,7 @@ export default function Dashboard() {
         <LoadingSpinner />
       ) : (
         <div className="h-screen w-full flex flex-col items-center justify-center bg-gray-100">
-          <h1 className="text-4xl font-bold mb-6">Wazzup {user?.fullname}!</h1>
+          <h1 className="text-4xl font-bold mb-6 text-gray-700">Wazzup {user?.fullname}!</h1>
           <div className="space-x-4">
             <Link href="/profile" passHref>
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -96,9 +96,9 @@ export default function Dashboard() {
             </Link>
           </div>
           <div className="my-6 bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-            <h1 className="text-center text-2xl font-bold mb-6 ">AAK</h1>
+            <h1 className="text-center text-2xl font-bold mb-6  text-gray-700">AAK</h1>
             <div className="text-center">
-              <p className="mb-4">Save this for account recovery in the future. This will be used on the forgot password page.</p>
+              <p className="mb-4 text-gray-700">Save this for account recovery in the future. This will be used on the forgot password page.</p>
             </div>
             <label htmlFor="aak" className="block text-gray-700">Alternative Authentication QR Code</label>
             {ImageUrl && (

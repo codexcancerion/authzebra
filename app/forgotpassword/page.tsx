@@ -53,9 +53,9 @@ export default function ForgotPasswordPage() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-                <h1 className="text-2xl font-bold mb-6 text-center">Forgot Your Password?</h1>
+                <h1 className="text-2xl font-bold mb-6 text-center text-gray-700">Forgot Your Password?</h1>
 
-                <p className="mb-4 text-center">
+                <p className="mb-4 text-center text-gray-700">
                     Enter the email address associated with your account. You will be asked later to upload or scan the QR Authentication Code we have sent you when you first created your account
                 </p>
 
@@ -66,7 +66,7 @@ export default function ForgotPasswordPage() {
                             type="email"
                             id="email"
                             onChange={handleEmail}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="w-full p-2 border border-gray-300 rounded text-gray-700"
                             placeholder="Enter your email"
                         />
                     </div>
@@ -83,7 +83,7 @@ export default function ForgotPasswordPage() {
                     
                 <p className="mt-4 text-red-500">{failedEmail ? "Email not found. Try again" : ""}</p>
 
-                <p className="mt-4 text-center text-sm">
+                <p className="mt-4 text-center text-sm text-gray-700">
                     Remember your password?{" "}
                     <Link href="/login" className="text-blue-500 hover:underline">Log in here</Link>
                 </p>

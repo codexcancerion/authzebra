@@ -102,11 +102,11 @@ export default function EditPage() {
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                 <div className="flex items-center mb-6">
                     <FaUserEdit className="text-4xl text-blue-500 mr-4" /> {/* Edit icon */}
-                    <h1 className="text-2xl font-bold">{loading ? "Loading..." : "Edit Your Profile"}</h1>
+                    <h1 className="text-2xl font-bold text-gray-700">{loading ? "Loading..." : "Edit Your Profile"}</h1>
                 </div>
                 <button
                         onClick={back}
-                        className="my-5 w-full md:w-auto bg-white hover:bg-slate-100 text-slate-500 font-bold py-2 px-4 rounded"
+                        className="my-5 w-full md:w-auto bg-gray-100 hover:bg-slate-100 text-slate-500 font-bold py-2 px-4 rounded"
                     >
                         Back
                     </button>
@@ -115,7 +115,7 @@ export default function EditPage() {
                 <input
                     type="text"
                     id="fullname"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handleFullname}
                     defaultValue={currentData.fullname}
                 />
@@ -124,7 +124,7 @@ export default function EditPage() {
                 <input
                     type="email"
                     id="email"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handleEmail}
                     defaultValue={currentData.email}
                 />
@@ -133,7 +133,7 @@ export default function EditPage() {
                 <input
                     type="text"
                     id="username"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handleUsername}
                     defaultValue={currentData.username}
                 />
@@ -142,7 +142,7 @@ export default function EditPage() {
                 <input
                     type="password"
                     id="password"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handlePassword}
                 />
 

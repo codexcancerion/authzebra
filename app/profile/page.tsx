@@ -70,9 +70,9 @@ export default function ProfilePage() {
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                 <div className="flex items-center mb-6">
                     <FaUserCircle className="text-2xl text-blue-500 mr-4" /> {/* User icon */}
-                    <h1 className="text-2xl font-bold">Profile</h1>
+                    <h1 className="text-2xl font-bold  text-gray-700">Profile</h1>
                 </div>
-                <p className="text-3xl font-bold mb-4">{data.fullname}</p>
+                <p className="text-3xl font-bold mb-4 text-gray-700">{data.fullname}</p>
 
 {/* Display additional user information */}
                 <div className="border-b pb-4 mb-4">

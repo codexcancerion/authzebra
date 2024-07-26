@@ -58,13 +58,13 @@ export default function LoginPage() {
         <>
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-                <h1 className="text-2xl font-bold mb-6">{loading ? "Loading..." : "Log in"}</h1>
+                <h1 className="text-2xl font-bold mb-6 text-gray-700">{loading ? "Loading..." : "Log in"}</h1>
 
                 <label htmlFor="email" className="block text-gray-700">Email</label>
                 <input
                     type="email"
                     id="email"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handleEmail}
                 />
 
@@ -72,7 +72,7 @@ export default function LoginPage() {
                 <input
                     type="password"
                     id="password"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handlePassword}
                 />
 
@@ -90,7 +90,7 @@ export default function LoginPage() {
                     <p>
                         <Link href="/forgotpassword" className="text-blue-500 hover:underline">Forgot Password?</Link>
                     </p>
-                    <p className="mt-4">
+                    <p className="mt-4 text-gray-700">
                         Don&apos;t have an account?{" "}
                         <Link href="/signup" className="text-blue-500 hover:underline">Sign up</Link>
                     </p>

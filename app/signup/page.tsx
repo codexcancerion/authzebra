@@ -55,13 +55,13 @@ export default function SignupPage() {
     return (
         <div className="h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-                <h1 className="text-2xl font-bold mb-6">{loading ? "Loading..." : "Sign Up"}</h1>
+                <h1 className="text-2xl font-bold mb-6 text-gray-700">{loading ? "Loading..." : "Sign Up"}</h1>
 
                 <label htmlFor="fullname" className="block text-gray-700">Full Name</label>
                 <input
                     type="text"
                     id="fullname"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handleChange}
                 />
 
@@ -69,7 +69,7 @@ export default function SignupPage() {
                 <input
                     type="email"
                     id="email"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handleChange}
                 />
 
@@ -77,7 +77,7 @@ export default function SignupPage() {
                 <input
                     type="text"
                     id="username"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handleChange}
                 />
 
@@ -85,7 +85,7 @@ export default function SignupPage() {
                 <input
                     type="password"
                     id="password"
-                    className="w-full p-2 mb-4 border border-gray-300 rounded"
+                    className="w-full p-2 mb-4 border border-gray-300 rounded text-gray-700"
                     onChange={handleChange}
                 />
 
@@ -99,7 +99,7 @@ export default function SignupPage() {
 
                 <p className="mt-4 text-red-500">{failedSignup ? "Sign up failed. Try again" : ""}</p>
 
-                <p className="mt-4 text-center">
+                <p className="mt-4 text-center text-gray-700">
                     Already have an account? <Link href="/login" className="text-blue-500 hover:underline">Log in</Link>
                 </p>
             </div>

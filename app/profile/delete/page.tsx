@@ -61,20 +61,26 @@ export default function ProfilePage() {
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                 <div className="flex items-center mb-6">
                     <HiOutlineTrash className="text-4xl text-red-500 mr-4" /> {/* Trash icon */}
-                    <h1 className="text-2xl font-bold">Are you sure you want to delete your account?</h1>
+                    <h1 className="text-2xl font-bold  text-gray-700">Are you sure you want to delete your account?</h1>
                 </div>
 
                 <div className="text-center">
-                    <p className="mb-4">Deleting your account is irreversible. All your data will be lost.</p>
+                    <p className="mb-4  text-gray-700">Deleting your account is irreversible. All your data will be lost.</p>
+                </div>
+                
+                <div className="text-center">
                     <button
                         onClick={back}
                         className="w-full md:w-auto bg-white hover:bg-slate-100 text-slate-500 font-bold py-2 px-4 rounded"
                     >
                         Nope
                     </button>
+                </div>
+                
+                <div className="text-center">
                     <button
                         onClick={deleteUserAccount}
-                        className="mx-10 w-full md:w-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        className="mx-auto w-full md:w-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                     >
                         Yes, delete my account
                     </button>
