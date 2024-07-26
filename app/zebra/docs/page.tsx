@@ -13,7 +13,7 @@ export default function Documentation() {
 
       <main className="container mx-auto px-4 py-8 flex-grow max-w-4xl">
         <section id="project-overview" className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4 border-b pb-2  text-gray-700">Project Overview</h2>
+          <h2 className="text-2xl font-semibold mb-4 border-b pb-2 text-gray-700">Project Overview</h2>
           <p className="text-lg leading-relaxed text-gray-700">
             AuthZebra is a web application designed to provide secure and efficient authentication using QR codes. This document outlines the system design, technological stack, and deployment details for AuthZebra.
           </p>
@@ -93,16 +93,65 @@ export default function Documentation() {
         <section id="deployment" className="mb-16">
           <h2 className="text-2xl font-semibold mb-4 border-b pb-2 text-gray-700">Deployment</h2>
           <p className="text-lg leading-relaxed mb-4 text-gray-700"><strong>Vercel</strong></p>
-          <p className=" text-gray-700">Vercel is a cloud platform for static sites and serverless functions that fits perfectly with Next.js, enabling developers to host their web applications easily. Chosen for deploying the AuthZebra application, providing seamless integration with Next.js for optimal performance, scalability, and ease of deployment.</p>
+          <p className="text-gray-700">Vercel is a cloud platform for static sites and serverless functions that fits perfectly with Next.js, enabling developers to host their web applications easily. Chosen for deploying the AuthZebra application, providing seamless integration with Next.js for optimal performance, scalability, and ease of deployment.</p>
         </section>
-      </main>
 
-      <footer className="bg-white shadow-sm py-4 mt-8">
-        <div className="container mx-auto px-4 max-w-4xl text-center text-gray-600">
+        <section id="how-to-test" className="mb-16">
+          <h2 className="text-2xl font-semibold mb-4 border-b pb-2 text-gray-700">How to Test AuthZebra</h2>
+          <p className="text-lg leading-relaxed mb-8 text-gray-700">To test the AuthZebra application, follow these steps:</p>
+          <h3 className="text-xl font-semibold mb-4 text-gray-700">Step-by-Step Testing</h3>
+          <ol className="list-decimal list-inside pl-4 space-y-2 text-gray-700">
+            <li>
+              <strong>Visit the Application</strong>
+              <p>Open <a href="https://authzebra.vercel.app" className="text-blue-500">https://authzebra.vercel.app</a> in your web browser.</p>
+            </li>
+            <li>
+              <strong>Create an Account</strong>
+              <ul className="list-disc list-inside pl-4 space-y-2 text-gray-700">
+                <li>Navigate to the sign-up page by clicking the "Sign Up" button on the home page.</li>
+                <li>Fill in your full name, email, username, and password.</li>
+                <li>Submit the form to create an account.</li>
+                <li>Download the generated QR Code displayed on the screen.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Download QR Code</strong>
+              <ul className="list-disc list-inside pl-4 space-y-2 text-gray-700">
+                <li>Log in using your credentials.</li>
+                <li>If login is successful, you will see your Alternative Authentication QR Code which you may download for Account Recovery.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Test QR Code Authentication</strong>
+              <ul className="list-disc list-inside pl-4 space-y-2 text-gray-700">
+                <li>First, go to profile and logout.</li>
+                <li>Go to the login page by clicking the "Login" button on the home page.</li>
+                <li>Go to the Forgot Password page.</li>
+                <li>Enter your email and upload the saved QR Code.</li>
+                <li>Verify if the system correctly recovers your account and allows you to update your password.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Explore CRUD Operations</strong>
+              <ul className="list-disc list-inside pl-4 space-y-2 text-gray-700">
+                <li>Once logged in, test the account management features.</li>
+                <li>Create, read, update, and delete account information to ensure all functionalities work properly.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Logout and Login Again</strong>
+              <ul className="list-disc list-inside pl-4 space-y-2 text-gray-700">
+                <li>Logout from your account using the logout button.</li>
+                <li>Try logging in again using your credentials to ensure that the login functionality works as expected.</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <footer className="text-center text-gray-500 text-sm mt-8 border-t pt-4">
           © {new Date().getFullYear()} AuthZebra. All rights reserved.
-          <p><Link href="https://codexcancerion.github.io" className="text-blue-500">codexcancerion.github.io</Link></p>
-        </div>
-      </footer>
+        </footer>
+      </main>
     </div>
   );
 }
