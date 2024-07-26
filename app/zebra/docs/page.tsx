@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function Documentation() {
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col">
@@ -11,34 +13,34 @@ export default function Documentation() {
 
       <main className="container mx-auto px-4 py-8 flex-grow max-w-4xl">
         <section id="project-overview" className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4 border-b pb-2">Project Overview</h2>
-          <p className="text-lg leading-relaxed">
+          <h2 className="text-2xl font-semibold mb-4 border-b pb-2  text-gray-700">Project Overview</h2>
+          <p className="text-lg leading-relaxed text-gray-700">
             AuthZebra is a web application designed to provide secure and efficient authentication using QR codes. This document outlines the system design, technological stack, and deployment details for AuthZebra.
           </p>
         </section>
 
         <section id="functional-requirements" className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4 border-b pb-2">Functional Requirements</h2>
-          <p className="text-lg leading-relaxed">
+          <h2 className="text-2xl font-semibold mb-4 border-b pb-2 text-gray-700">Functional Requirements</h2>
+          <p className="text-lg leading-relaxed text-gray-700">
             AuthZebra supports QR code-based authentication for account recovery, password updates, and account deletion. It also supports CRUD operations, allowing users to create, read, update, and delete their accounts.
           </p>
         </section>
 
         <section id="system-design" className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4 border-b pb-2">System Design</h2>
-          <h3 className="text-xl font-semibold mb-4">Task Workflow</h3>
+          <h2 className="text-2xl font-semibold mb-4 border-b pb-2 text-gray-700">System Design</h2>
+          <h3 className="text-xl font-semibold mb-4 text-gray-700">Task Workflow</h3>
           <div className="space-y-8">
             <div>
-              <h4 className="font-semibold mb-2">QR Code Generation</h4>
-              <ul className="list-decimal list-inside pl-4 space-y-2">
+              <h4 className="font-semibold mb-2 text-gray-700">QR Code Generation</h4>
+              <ul className="list-decimal list-inside pl-4 space-y-2 text-gray-700">
                 <li>User creates an account including full name, email, username, and password.</li>
                 <li>The system generates a unique ID, Recovery Key, and unique Alternative Authentication Key (AAK) (encrypted user email and Recovery Key) for the user and saves it to the database.</li>
                 <li>The system generates the user&apos;s QR Code based on the AAK and displays it on the user&apos;s screen (user can download the QR code).</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-2">Account Recovery/Forgot Password</h4>
-              <ul className="list-decimal list-inside pl-4 space-y-2">
+              <h4 className="font-semibold mb-2 text-gray-700">Account Recovery/Forgot Password</h4>
+              <ul className="list-decimal list-inside pl-4 space-y-2 text-gray-700">
                 <li>User enters their email for account recovery on the Forgot Password page.</li>
                 <li>User uploads the saved QR Code.</li>
                 <li>The system decrypts the AAK from the QR Code and retrieves the Email and Recovery Key (initially encrypted on the AAK).</li>
@@ -51,11 +53,11 @@ export default function Documentation() {
         </section>
 
         <section id="technology-stack" className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4 border-b pb-2">Technology Stack</h2>
-          <p className="text-lg leading-relaxed mb-8">
+          <h2 className="text-2xl font-semibold mb-4 border-b pb-2 text-gray-700">Technology Stack</h2>
+          <p className="text-lg leading-relaxed mb-8 text-gray-700">
             AuthZebra utilizes a modern technology stack to ensure a seamless, secure, and responsive user experience across various devices. Below is a detailed description of each component in the technology stack:
           </p>
-          <ul className="list-disc list-inside space-y-4 mt-4">
+          <ul className="list-disc list-inside space-y-4 mt-4 text-gray-700">
             <li>
               <strong>Next.js</strong>
               <p>Next.js is a React framework that provides hybrid static and server rendering, TypeScript support, smart bundling, route pre-fetching, and more. It is used as the main framework to build the app, enabling both client-side and server-side rendering for optimized performance.</p>
@@ -79,6 +81,7 @@ export default function Documentation() {
             <li>
               <strong>lunaris cipher</strong>
               <p>An original encryption method (specifics of which are proprietary or custom-developed for this project). Provides an additional layer of security by encrypting sensitive data such as the Recovery Key and Alternative Authentication Key (AAK).</p>
+              <p>Visit at <Link href="https://lunariscipher.vercel.app" className="text-blue-500">lunariscipher.vercel.app</Link>.</p>
             </li>
             <li>
               <strong>react-zxing</strong>
@@ -88,15 +91,16 @@ export default function Documentation() {
         </section>
 
         <section id="deployment" className="mb-16">
-          <h2 className="text-2xl font-semibold mb-4 border-b pb-2">Deployment</h2>
-          <p className="text-lg leading-relaxed mb-4"><strong>Vercel</strong></p>
-          <p>Vercel is a cloud platform for static sites and serverless functions that fits perfectly with Next.js, enabling developers to host their web applications easily. Chosen for deploying the AuthZebra application, providing seamless integration with Next.js for optimal performance, scalability, and ease of deployment.</p>
+          <h2 className="text-2xl font-semibold mb-4 border-b pb-2 text-gray-700">Deployment</h2>
+          <p className="text-lg leading-relaxed mb-4 text-gray-700"><strong>Vercel</strong></p>
+          <p className=" text-gray-700">Vercel is a cloud platform for static sites and serverless functions that fits perfectly with Next.js, enabling developers to host their web applications easily. Chosen for deploying the AuthZebra application, providing seamless integration with Next.js for optimal performance, scalability, and ease of deployment.</p>
         </section>
       </main>
 
       <footer className="bg-white shadow-sm py-4 mt-8">
         <div className="container mx-auto px-4 max-w-4xl text-center text-gray-600">
           © {new Date().getFullYear()} AuthZebra. All rights reserved.
+          <p><Link href="https://codexcancerion.github.io" className="text-blue-500">codexcancerion.github.io</Link></p>
         </div>
       </footer>
     </div>
